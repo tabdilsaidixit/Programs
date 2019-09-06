@@ -1,0 +1,34 @@
+
+public class CheckPossibility {
+	public boolean checkPossibility(int[] nums) {
+        int numberOfVariations =0;
+        if(nums.length<=2){
+            return true;
+        }
+        for(int i=0; i<nums.length-1; i++){
+            
+            if(nums[i]>nums[i+1] ){
+                numberOfVariations++;
+                if(i>0) {
+                	nums[i] = nums[i-1];
+                	if(nums[i]<=nums[i+1])
+                	{
+                		continue;
+                	}
+                	else {
+                		 nums[i+1] = nums[i];
+                	}
+                }
+                if(numberOfVariations>1){
+                    return false;
+                }
+            }
+        }
+        //System.out.println(numberOfVariations);
+        return true;
+    }
+	
+	public static void main(String[] args) {
+		System.out.println(new CheckPossibility().checkPossibility(new int[] {3, 4, 2, 3}));
+	}
+}
