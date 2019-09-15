@@ -1,7 +1,9 @@
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class RotateArray {
 	
-	public void rotate(int[] nums, int k) {
+	public void rotate1(int[] nums, int k) {
         if(nums.length<2) {
         	return;
         }
@@ -18,5 +20,31 @@ public class RotateArray {
 		}
 		nums[0] = temp;
 	}
+	
+	public void rotate(int[] nums, int k) {
+		int lengthOfArray = nums.length;
+		
+		if(lengthOfArray<2) {
+        	return;
+        	
+        }
+        int numberOfRotations = k%lengthOfArray;
+        
+        Queue<Integer> queue = new LinkedList<Integer>();
+        
+        for(int i = lengthOfArray-1; i>lengthOfArray-numberOfRotations-1; i--) {
+        	queue.add(nums[i]);
+        }
+        
+        for(int i=0; i<lengthOfArray-numberOfRotations; i++) {
+        	nums[i+numberOfRotations] = nums[i];
+        }
+        
+        for(int i = numberOfRotations-1; i>=0; i--) {
+        	nums[i] = queue.remove();
+        }
+        
+    }
+	
 
 }

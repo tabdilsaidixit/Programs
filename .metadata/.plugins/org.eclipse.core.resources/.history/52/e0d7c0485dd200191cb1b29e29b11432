@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class isSymmetric {
+    public boolean isSymmetric(TreeNode root) {
+    	 List<TreeNode> arr= new ArrayList<TreeNode>();
+    	 
+    	getInorderTraversal(root, arr);
+    	for(TreeNode x: arr) {
+    		if(x!=null) {
+    			System.out.print(x.val + "  ");
+    		}
+    		else {
+    			System.out.print( " null ");
+    		}
+    	}
+    	
+    	
+    	
+    	return true;
+    }
+    
+    public void getInorderTraversal(TreeNode root, List<TreeNode> treeNodesList){
+    	
+    	if(root!=null) {
+    		getInorderTraversal(root.left, treeNodesList);
+    		treeNodesList.add(root);
+    		getInorderTraversal(root.right, treeNodesList);
+    	}
+    	else {
+    		treeNodesList.add(root);
+    	}
+    	
+    }
+    
+    
+}
