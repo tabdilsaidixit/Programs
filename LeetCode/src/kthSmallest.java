@@ -1,5 +1,24 @@
-
+import java.util.*;
 public class kthSmallest {
+
+	public int kthSmallest(TreeNode root, int k) {
+		if(root==null) {
+			return 0;
+		}
+		
+        ArrayList<Integer> arrlist = new ArrayList<Integer>();
+        kthSmallest(root, arrlist);
+       
+		return arrlist.get(k-1);
+    }
+	void kthSmallest(TreeNode root, ArrayList<Integer> arrlist) {
+		if(root!=null) {
+			arrlist.add(root.val);
+			kthSmallest(root.right, arrlist);
+			kthSmallest(root.left, arrlist);
+		}
+	}
+	
 	 public int kthSmallest(int[][] matrix, int k) {
 	        if(k<1){
 	            return 0;
